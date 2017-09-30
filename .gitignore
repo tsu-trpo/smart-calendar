@@ -11,4 +11,4 @@
 **/*.pidb
 
 # include meta files
-*.meta
+!*.*.meta

@@ -1,2 +1,2 @@
-#КАК МЫ РАБОТАЕМ
+# HOW WE ARE WORKING
 ![teamwork](teamwork.gif)

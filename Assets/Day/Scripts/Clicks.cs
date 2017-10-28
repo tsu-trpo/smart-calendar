@@ -10,7 +10,7 @@ public class Clicks : MonoBehaviour
     {
         print("Click");
         
-	}
+    }
 
     private void OnMouseUp()
     {

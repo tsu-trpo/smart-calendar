@@ -10,7 +10,8 @@
 **/*.userprefs
 **/*.pidb
 
+# not include vs settings
+.vs/
+
 # include meta files
-!*.*.meta
-1.txt
-2.txt
+!*.meta

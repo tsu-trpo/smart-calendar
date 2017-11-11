@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Cloner : MonoBehaviour {
 
+    private static float y = 3;
+
     public GameObject target;
     public Transform container;
 
     void OnMouseUp()
     {
-            GameObject.Instantiate(target, new Vector3(Random.Range(-3, 3), Random.Range(-5, 5), 0), Quaternion.identity, container);
+        GameObject.Instantiate(target, new Vector3(0, y, -5), Quaternion.identity, container);
+        y -= 1;
     }
 }

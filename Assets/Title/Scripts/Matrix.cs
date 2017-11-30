@@ -21,5 +21,4 @@ public class Matrix : MonoBehaviour {
         thisMonth = this.transform.parent.GetChild(2).GetComponent<Text>();
         thisMonth.text = matrix.month.ToString("MMMM yyyy");
     }
-
 }

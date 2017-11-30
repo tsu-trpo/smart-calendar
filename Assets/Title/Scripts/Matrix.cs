@@ -12,7 +12,6 @@ public class Matrix : MonoBehaviour {
     {
         matrix.month = matrix.month.AddMonths(1);
         thisMonth.text = matrix.month.ToString("MMMM yyyy");
-
         matrix.printMonth();
     }
 

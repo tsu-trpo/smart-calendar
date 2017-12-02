@@ -11,7 +11,7 @@ public class Cloner : MonoBehaviour {
 
     void OnMouseUp()
     {
-        GameObject.Instantiate(target, new Vector3(0, y, -5), Quaternion.identity, container);
+        GameObject.Instantiate(target, new Vector3(0, y, 0), Quaternion.identity, container);
         y -= 1;
     }
 }

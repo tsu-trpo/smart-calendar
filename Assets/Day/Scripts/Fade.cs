@@ -5,15 +5,16 @@ using UnityEngine;
 
 public class Fade : MonoBehaviour
 {
-    private Text txt;
-    
+    public float length;
+    private Text text;
+
     void Start ()
     {
-        txt = GetComponent<Text>();
+        text = GetComponent<Text>();
     }
     
     void Update ()
     {
-        txt.color = new Color(txt.color.r, txt.color.g, txt.color.b, Mathf.PingPong(Time.time, 1.0f));
+        text.color = new Color(text.color.r, text.color.g, text.color.b, Mathf.PingPong(Time.time, length));
     }
 }

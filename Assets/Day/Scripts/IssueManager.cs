@@ -8,7 +8,6 @@ public class IssueManager : MonoBehaviour {
     public GameObject dialogWindow, prototype;
     public InputField IssueInput;
     public Transform container;
-    private float y = 2.5f;
     private bool isPressed = false;
 
     private void Start()
@@ -23,12 +22,11 @@ public class IssueManager : MonoBehaviour {
             if (IssueInput.text.Length > 3)
             {
                 //how to create prototype constructor with 2 strings as params?
-                GameObject newIssue = Instantiate(prototype, new Vector3(0, y, 0), Quaternion.identity, container) as GameObject;
+                GameObject newIssue = Instantiate(prototype, container) as GameObject;
                 newIssue.GetComponentInChildren<Text>().text = IssueInput.text;
-                //IssueInput.text = "";
+                //IssueInput.text = ""; //DONT REMEMBER TO REMOVE IT
                 dialogWindow.SetActive(false);
                 isPressed = false;
-                y -= 1;
             }
         }
         else

@@ -15,3 +15,6 @@
 
 # include meta files
 !*.meta
+
+# include build settings
+!ProjectSettings/EditorBuildSettings.asset

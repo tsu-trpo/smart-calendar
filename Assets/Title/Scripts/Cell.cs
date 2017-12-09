@@ -12,7 +12,6 @@ public class Cell : MonoBehaviour
     public void SetDate(DateTime _date)
     {
         date = _date;
-        text = this.gameObject.transform.GetChild(0).GetComponent<Text>();
         text.text = date.Day.ToString();
     }
 
@@ -26,8 +25,18 @@ public class Cell : MonoBehaviour
         text.color = Color.black;
     }
 
+    public void SetColorToday ()
+    {
+        text.color = Color.red;
+    }
+
     private void OnMouseUp()
     {
         Debug.Log("Clicked! on " + date.ToString("yyyy MMMM dd"));
+    }
+
+    private void Awake()
+    {
+        text = this.gameObject.transform.GetChild(0).GetComponent<Text>();
     }
 }

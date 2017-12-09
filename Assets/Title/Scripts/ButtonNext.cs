@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonNext : MonoBehaviour {
-
-    private MonthView monthView;
+public class ButtonNext : MonoBehaviour
+{
+    public MonthView monthView;
 
     private void OnMouseDown()
     {
-        monthView.NextMonth();
-    }
+        if (monthView == null)
+        {
+            Debug.Log("Ругаемся!");
+        }
 
-    void Start()
-    {
-        monthView = this.GetComponentInParent<MonthView>();
+        else
+        {
+            monthView.NextMonth();
+        }
     }
 }

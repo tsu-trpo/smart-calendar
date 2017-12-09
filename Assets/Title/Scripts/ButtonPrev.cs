@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class ButtonPrev : MonoBehaviour {
 
-    private MonthView monthView;
+    public MonthView monthView;
 
     private void OnMouseDown()
     {
-        monthView.PreviousMonth();
-    }
+        if (monthView == null)
+        {
+            Debug.Log("Ругаемся!");
+        }
 
-    void Start()
-    {
-        monthView = this.GetComponentInParent<MonthView>();
+        else {
+            monthView.PreviousMonth();
+        }
+           
     }
 }

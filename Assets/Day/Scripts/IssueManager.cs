@@ -15,6 +15,15 @@ public class IssueManager : MonoBehaviour {
         dialogWindow.SetActive(false);
     }
 
+    private GameObject spawnIssue(string issueText, string issueTime)
+    {
+        GameObject issueClone = prototype;
+        Text[] texts = issueClone.GetComponentsInChildren<Text>();
+        texts[0].text = issueText;
+        texts[1].text = issueTime;
+        return issueClone;
+    }
+
     private void OnMouseUp()
     {
         if (isPressed)
@@ -22,9 +31,8 @@ public class IssueManager : MonoBehaviour {
             if (IssueInput.text.Length > 3)
             {
                 //how to create prototype constructor with 2 strings as params?
-                GameObject newIssue = Instantiate(prototype, container) as GameObject;
-                newIssue.GetComponentInChildren<Text>().text = IssueInput.text;
-                //IssueInput.text = ""; //DONT REMEMBER TO REMOVE IT
+                Instantiate(spawnIssue(IssueInput.text, DialogWindowManager.getHours() + ":" + DialogWindowManager.getMinutes()), container);
+                IssueInput.text = ""; //DONT REMEMBER TO REMOVE IT
                 dialogWindow.SetActive(false);
                 isPressed = false;
             }

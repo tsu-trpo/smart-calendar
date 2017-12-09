@@ -8,7 +8,7 @@ public class MonthView : MonoBehaviour {
     public GameObject target;
     public GameObject canvas;
     private DateTime month = DateTime.Now;
-    private Cell[] ArrayOfCells = new Cell[42];
+    private Cell[] ArrayOfCells = new Cell[countOfRows * countOfColumns];
     private Text thisMonth;
     private const int countOfRows = 6;
     private const int countOfColumns = 7;
@@ -43,7 +43,8 @@ public class MonthView : MonoBehaviour {
         thisMonth.text = month.ToString("MMMM yyyy");
         DateTime lastOfPrevMonth = new DateTime(month.Year, month.Month, 1).AddDays(-1);
         int dayOfWeek = (int)lastOfPrevMonth.DayOfWeek;
-        int firstPrintDay = lastOfPrevMonth.Day - dayOfWeek + 1;    //Week starts from 0 e.g sunday is 0; 
+        //Week starts from 0 e.g sunday is 0; 
+        int firstPrintDay = lastOfPrevMonth.Day - dayOfWeek + 1;    
         int counterOfArray = 0;
 
         for (int i = firstPrintDay; i <= lastOfPrevMonth.Day; i++)

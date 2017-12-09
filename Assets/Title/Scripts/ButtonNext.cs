@@ -10,12 +10,10 @@ public class ButtonNext : MonoBehaviour
     {
         if (monthView == null)
         {
-            Debug.Log("Ругаемся!");
+            Debug.LogError("Button doesn't have monthView");
+            return;
         }
 
-        else
-        {
-            monthView.NextMonth();
-        }
+        monthView.NextMonth();
     }
 }

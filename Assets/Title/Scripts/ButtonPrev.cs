@@ -2,20 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonPrev : MonoBehaviour {
-
+public class ButtonPrev : MonoBehaviour
+{
     public MonthView monthView;
 
     private void OnMouseDown()
     {
         if (monthView == null)
         {
-            Debug.Log("Ругаемся!");
+            Debug.LogError("Button doesn't have monthView");
+            return;
         }
 
-        else {
-            monthView.PreviousMonth();
-        }
-           
+        monthView.PreviousMonth();
     }
 }

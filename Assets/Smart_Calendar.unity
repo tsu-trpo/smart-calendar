@@ -999,8 +999,8 @@ GameObject:
   - component: {fileID: 956801466}
   - component: {fileID: 956801468}
   - component: {fileID: 956801467}
-  - component: {fileID: 956801471}
   - component: {fileID: 956801470}
+  - component: {fileID: 956801471}
   - component: {fileID: 956801469}
   m_Layer: 5
   m_Name: Close Button
@@ -1072,7 +1072,7 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: 6d2aa2aaf06516a47afc7234ef5198b9, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!58 &956801470
@@ -1101,7 +1101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faff3e0e59c429642907355291699f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onPressedScale: 0
+  onPressedScale: 0.85
 --- !u!1 &959183494
 GameObject:
   m_ObjectHideFlags: 0
@@ -2692,7 +2692,7 @@ GameObject:
   - component: {fileID: 1678155081}
   - component: {fileID: 1678155080}
   m_Layer: 5
-  m_Name: Content
+  m_Name: Nodes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3037,7 +3037,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 805
+  m_Radius: 80
 --- !u!114 &2054709566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3088,10 +3088,10 @@ MonoBehaviour:
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 2
   m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillClockwise: 0
+  m_FillOrigin: 2
 --- !u!222 &2054709569
 CanvasRenderer:
   m_ObjectHideFlags: 0

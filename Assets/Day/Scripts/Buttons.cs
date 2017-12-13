@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Buttons : MonoBehaviour
 {
+    public float onPressedScale;
+
+    Vector3 prevScale;
+
     void OnMouseDown()
     {
-        transform.localScale = new Vector3(0.85f, 0.85f, 0.85f);
+        prevScale = transform.localScale;
+        transform.localScale = prevScale * onPressedScale;
     }
+
     void OnMouseUp()
     {
-        transform.localScale = new Vector3(1.00f, 1.00f, 1.00f);
+        transform.localScale = prevScale;
     }
 }

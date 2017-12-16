@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class IssueManager : MonoBehaviour {
 
-    public GameObject dialogWindow, prototype;
+    public GameObject dialogWindow, prototype, closeButton;
     public InputField IssueInput;
     public Transform container;
-    private bool isPressed = false;
 
     private void Start()
     {
@@ -26,7 +25,7 @@ public class IssueManager : MonoBehaviour {
 
     private void OnMouseUp()
     {
-        if (isPressed)
+        if (dialogWindow.activeSelf)
         {
             if (IssueInput.text.Length > 3)
             {
@@ -34,13 +33,13 @@ public class IssueManager : MonoBehaviour {
                 Instantiate(spawnIssue(IssueInput.text, DialogWindowManager.getHours() + ":" + DialogWindowManager.getMinutes()), container);
                 IssueInput.text = ""; //DONT REMEMBER TO REMOVE IT
                 dialogWindow.SetActive(false);
-                isPressed = false;
+                closeButton.GetComponent<CloseButton>().Deactivate();
             }
         }
         else
         {
+            closeButton.GetComponent<CloseButton>().Activate();
             dialogWindow.SetActive(true);
-            isPressed = true;
         }
     }
 }

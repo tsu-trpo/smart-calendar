@@ -1002,6 +1002,7 @@ GameObject:
   - component: {fileID: 956801470}
   - component: {fileID: 956801471}
   - component: {fileID: 956801469}
+  - component: {fileID: 956801472}
   m_Layer: 5
   m_Name: Close Button
   m_TagString: Untagged
@@ -1024,7 +1025,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 95, y: 95}
+  m_AnchoredPosition: {x: 95, y: -95}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &956801467
@@ -1071,6 +1072,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 6d2aa2aaf06516a47afc7234ef5198b9, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 6d2aa2aaf06516a47afc7234ef5198b9, type: 2}
+  - {fileID: 7400000, guid: b6081f98d8f63d846bcfc7e8961b6a69, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -1102,6 +1104,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onPressedScale: 0.85
+--- !u!114 &956801472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 956801465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2f81a85e9ae8784ebf48dd9252a3e1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogWindow: {fileID: 2121731111}
 --- !u!1 &959183494
 GameObject:
   m_ObjectHideFlags: 0
@@ -3020,7 +3034,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -95, y: 95}
+  m_AnchoredPosition: {x: -95, y: -95}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!58 &2054709565
@@ -3063,6 +3077,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogWindow: {fileID: 2121731111}
   prototype: {fileID: 1439363978144886, guid: 8d8d6ce535fffc145ae3dcb69b90dab5, type: 2}
+  closeButton: {fileID: 956801465}
   IssueInput: {fileID: 1280213892}
   container: {fileID: 1678155079}
 --- !u!114 &2054709568
@@ -3109,6 +3124,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 6d2aa2aaf06516a47afc7234ef5198b9, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 6d2aa2aaf06516a47afc7234ef5198b9, type: 2}
+  - {fileID: 7400000, guid: b6081f98d8f63d846bcfc7e8961b6a69, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0

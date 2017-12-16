@@ -8,9 +8,14 @@ public class Buttons : MonoBehaviour
 
     Vector3 prevScale;
 
-    void OnMouseDown()
+    private void Awake()
     {
         prevScale = transform.localScale;
+    }
+
+    void OnMouseDown()
+    {
+        //prevScale = transform.localScale;
         transform.localScale = prevScale * onPressedScale;
     }
 

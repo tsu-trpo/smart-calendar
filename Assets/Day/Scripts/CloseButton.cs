@@ -15,6 +15,13 @@ public class CloseButton : MonoBehaviour
     const string BUTTON_UP_ANIM = "Button up";
     const string BUTTON_DOWN_ANIM = "Button down";
 
+    private void Awake()
+    {
+        buttonCollider = GetComponent<CircleCollider2D>();
+        buttonAnimation = GetComponent<Animation>();
+        dialogWindowManager = dialogWindow.GetComponent<DialogWindowManager>();
+    }
+
     private void OnMouseUp()
     {
         dialogWindowManager.Deactivate();

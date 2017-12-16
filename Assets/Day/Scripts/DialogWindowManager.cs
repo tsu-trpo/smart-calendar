@@ -41,11 +41,6 @@ public class DialogWindowManager : MonoBehaviour {
         gameObject.SetActive(false);
     }
 
-    private IEnumerator Wait(float time)
-    {
-        yield return new WaitForSeconds(time);
-    }
-
     private void Awake()
     {
         anim = GetComponent<Animation>();
@@ -57,7 +52,7 @@ public class DialogWindowManager : MonoBehaviour {
             newButton.name = iD2;
             newButton.GetComponentInChildren<Text>().text = iD2;
             newButton.onClick.AddListener(delegate { hoursChoosed = iD2; });
-            }
+        }
 
         for (int i = 0; i < 60; ++i)
         {

@@ -11,7 +11,6 @@ public class IssueManager : MonoBehaviour {
 
     private void Awake()
     {
-        img = GetComponent<Image>();
         dialogWindow.SetActive(false);
     }
 

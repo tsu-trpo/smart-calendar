@@ -1,23 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class IssueManager : MonoBehaviour {
+public class IssueManager : MonoBehaviour
+{
 
     public GameObject dialogWindow, prototype, closeButton;
-    public InputField IssueInput;
+    public UnityEngine.UI.InputField issueInput;
     public Transform container;
+
+    DialogWindowManager dialogWindowManager;
+    CloseButton closeButtonDriver;
 
     private void Awake()
     {
+        dialogWindowManager = dialogWindow.GetComponent<DialogWindowManager>();
         dialogWindow.SetActive(false);
+        closeButtonDriver = closeButton.GetComponent<CloseButton>();
     }
 
     private GameObject spawnIssue(string issueText, string issueTime)
     {
         GameObject issueClone = prototype;
-        Text[] texts = issueClone.GetComponentsInChildren<Text>();
+        UnityEngine.UI.Text[] texts = issueClone.GetComponentsInChildren<UnityEngine.UI.Text>();
         texts[0].text = issueText;
         texts[1].text = issueTime;
         return issueClone;
@@ -27,20 +32,22 @@ public class IssueManager : MonoBehaviour {
     {
         if (dialogWindow.activeSelf)
         {
-            if (IssueInput.text.Length > 3)
+            if (issueInput.text.Length > 3)
             {
-                Instantiate(spawnIssue(IssueInput.text, DialogWindowManager.getHours() + ":" + DialogWindowManager.getMinutes()), container);
-                IssueInput.text = "";
-                dialogWindow.GetComponent<DialogWindowManager>().Deactivate();
-                closeButton.GetComponent<CloseButton>().Deactivate();
+                string selectedTime = string.Empty;
+                selectedTime += dialogWindowManager.SelectedHours;
+                selectedTime += ":";
+                selectedTime += dialogWindowManager.SelectedMinutes;
+                Instantiate(spawnIssue(issueInput.text, selectedTime), container);
+                dialogWindowManager.Deactivate();
+                issueInput.text = string.Empty;
+                closeButtonDriver.Deactivate();
             }
         }
         else
         {
-            closeButton.GetComponent<CloseButton>().Activate();
-            dialogWindow.GetComponent<DialogWindowManager>().Activate();
+            closeButtonDriver.Activate();
+            dialogWindowManager.Activate();
         }
     }
-
-
 }

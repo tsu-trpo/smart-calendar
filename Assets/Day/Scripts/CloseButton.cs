@@ -4,26 +4,32 @@ using UnityEngine;
 
 [RequireComponent(typeof(CircleCollider2D))]
 [RequireComponent(typeof(Animation))]
-public class CloseButton : MonoBehaviour {
-
+public class CloseButton : MonoBehaviour
+{
     public GameObject dialogWindow;
+
+    CircleCollider2D buttonCollider;
+    Animation buttonAnimation;
+    DialogWindowManager dialogWindowManager;
+
+    const string BUTTON_UP_ANIM = "Button up";
+    const string BUTTON_DOWN_ANIM = "Button down";
 
     private void OnMouseUp()
     {
-        dialogWindow.GetComponent<DialogWindowManager>().Deactivate();
+        dialogWindowManager.Deactivate();
         Deactivate();
     }
 
     public void Activate()
     {
-        GetComponent<CircleCollider2D>().enabled = true;
-        GetComponent<Animation>().Play("Button up");
+        buttonCollider.enabled = true;
+        buttonAnimation.Play(BUTTON_UP_ANIM);
     }
 
     public void Deactivate()
     {
-        GetComponent<CircleCollider2D>().enabled = false;
-        GetComponent<Animation>().Play("Button down");
+        buttonCollider.enabled = false;
+        buttonAnimation.Play(BUTTON_DOWN_ANIM);
     }
-
 }

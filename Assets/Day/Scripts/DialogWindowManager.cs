@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+[RequireComponent(typeof(Animation))]
 public class DialogWindowManager : MonoBehaviour {
 
     public Transform hoursContainer, minutesContainer;
     public Button buttonPrototype;
 
     private static string hoursChoosed = "00", minutesChoosed = "00";
+    private Animation anim;
 
     static public string getHours()
     {
@@ -20,8 +23,33 @@ public class DialogWindowManager : MonoBehaviour {
         return minutesChoosed;
     }
 
-    private void Start()
+    public void Activate()
     {
+        gameObject.SetActive(true);
+        anim.Play("DM show");
+    }
+
+    public void Deactivate()
+    {
+        StartCoroutine(Deactivating());
+    }
+
+    IEnumerator Deactivating()
+    {
+        anim.Play("DM hide");
+        yield return new WaitForSeconds(anim["DM hide"].length);
+        gameObject.SetActive(false);
+    }
+
+    private IEnumerator Wait(float time)
+    {
+        yield return new WaitForSeconds(time);
+    }
+
+    private void Awake()
+    {
+        anim = GetComponent<Animation>();
+
         for (int i = 0; i < 24; ++i)
         {
             Button newButton = Instantiate(buttonPrototype, hoursContainer) as Button;

@@ -15,7 +15,6 @@ public class Buttons : MonoBehaviour
 
     void OnMouseDown()
     {
-        //prevScale = transform.localScale;
         transform.localScale = prevScale * onPressedScale;
     }
 

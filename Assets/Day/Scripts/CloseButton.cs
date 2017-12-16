@@ -8,11 +8,9 @@ public class CloseButton : MonoBehaviour {
 
     public GameObject dialogWindow;
 
-    bool isActive = false;
-
     private void OnMouseUp()
     {
-        dialogWindow.SetActive(false);
+        dialogWindow.GetComponent<DialogWindowManager>().Deactivate();
         Deactivate();
     }
 

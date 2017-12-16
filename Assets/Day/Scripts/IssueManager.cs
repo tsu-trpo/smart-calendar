@@ -9,8 +9,9 @@ public class IssueManager : MonoBehaviour {
     public InputField IssueInput;
     public Transform container;
 
-    private void Start()
+    private void Awake()
     {
+        img = GetComponent<Image>();
         dialogWindow.SetActive(false);
     }
 
@@ -29,17 +30,18 @@ public class IssueManager : MonoBehaviour {
         {
             if (IssueInput.text.Length > 3)
             {
-                //how to create prototype constructor with 2 strings as params?
                 Instantiate(spawnIssue(IssueInput.text, DialogWindowManager.getHours() + ":" + DialogWindowManager.getMinutes()), container);
-                IssueInput.text = ""; //DONT REMEMBER TO REMOVE IT
-                dialogWindow.SetActive(false);
+                IssueInput.text = "";
+                dialogWindow.GetComponent<DialogWindowManager>().Deactivate();
                 closeButton.GetComponent<CloseButton>().Deactivate();
             }
         }
         else
         {
             closeButton.GetComponent<CloseButton>().Activate();
-            dialogWindow.SetActive(true);
+            dialogWindow.GetComponent<DialogWindowManager>().Activate();
         }
     }
+
+
 }

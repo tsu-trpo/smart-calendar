@@ -3256,6 +3256,7 @@ GameObject:
   - component: {fileID: 2121731114}
   - component: {fileID: 2121731113}
   - component: {fileID: 2121731115}
+  - component: {fileID: 2121731116}
   m_Layer: 5
   m_Name: Dialog Window
   m_TagString: Untagged
@@ -3336,6 +3337,22 @@ MonoBehaviour:
   minutesContainer: {fileID: 1161731567}
   buttonPrototype: {fileID: 114310288142241228, guid: 6be95bca47147db4bbe8f131907a6c16,
     type: 2}
+--- !u!111 &2121731116
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2121731111}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 06ae7069c0effbc47841240b730b9837, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 3950d19475cba0142843ad55e2db8e05, type: 2}
+  - {fileID: 7400000, guid: 06ae7069c0effbc47841240b730b9837, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &2134732121
 GameObject:
   m_ObjectHideFlags: 0

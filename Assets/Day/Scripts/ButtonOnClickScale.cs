@@ -15,7 +15,7 @@ public class ButtonOnClickScale : MonoBehaviour
 
     void OnMouseDown()
     {
-        transform.localScale.Set(onPressedScale, initScale.y, onPressedScale);
+        transform.localScale = initScale * onPressedScale;
     }
 
     void OnMouseUp()

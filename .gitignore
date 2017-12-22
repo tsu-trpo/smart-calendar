@@ -5,6 +5,7 @@
 **/Library/*
 **/Temp/*
 **/UnityPackageManager/*
+**/ProjectSettings/* #should it be here?
 **/*.csproj
 **/*.unityproj
 **/*.sln

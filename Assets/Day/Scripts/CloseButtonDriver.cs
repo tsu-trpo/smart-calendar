@@ -1,16 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(CircleCollider2D))]
 [RequireComponent(typeof(Animation))]
-public class CloseButton : MonoBehaviour
+public class CloseButtonDriver : MonoBehaviour
 {
     public GameObject dialogWindow;
 
-    CircleCollider2D buttonCollider;
-    Animation buttonAnimation;
-    DialogWindowManager dialogWindowManager;
+    private CircleCollider2D buttonCollider;
+    private Animation buttonAnimation;
+    private DialogWindowManager dialogWindowManager;
 
     const string BUTTON_UP_ANIM = "Button up";
     const string BUTTON_DOWN_ANIM = "Button down";

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,9 +6,10 @@ using UnityEngine.UI;
 public class DialogWindowManager : MonoBehaviour
 {
     public Transform hoursContainer, minutesContainer;
+    public InputField issueInput; //How to setpossibility set references only at inspector?
     public Button buttonPrototype;
 
-    public string SelectedHours
+    public int SelectedHours
     {
         get
         {
@@ -17,7 +17,7 @@ public class DialogWindowManager : MonoBehaviour
         }
     }
 
-    public string SelectedMinutes
+    public int SelectedMinutes
     {
         get
         {
@@ -25,20 +25,28 @@ public class DialogWindowManager : MonoBehaviour
         }
     }
 
-    private string _selectedHours = "00", _selectedMinutes = "00";
+    public string IssueText
+    {
+        get
+        {
+            return issueInput.text;
+        }
+    }
+
+    private int _selectedHours = 0, _selectedMinutes = 0;
 
     const int NUMBER_OF_HOURS = 24;
     const int NUMBER_OF_MINUTES = 60;
 
     private Animation anim;
 
-    const string SHOW_ANIM = "DM show";
-    const string HIDE_ANIM = "DM hide";
+    const string SHOW_DM_ANIM = "DM show";
+    const string HIDE_DM_ANIM = "DM hide";
 
     public void Activate()
     {
         gameObject.SetActive(true);
-        anim.Play(SHOW_ANIM);
+        anim.Play(SHOW_DM_ANIM);
     }
 
     public void Deactivate()
@@ -49,7 +57,8 @@ public class DialogWindowManager : MonoBehaviour
     IEnumerator Deactivating()
     {
         anim.Play("DM hide");
-        yield return new WaitForSeconds(anim[HIDE_ANIM].length);
+        yield return new WaitForSeconds(anim[HIDE_DM_ANIM].length);
+        issueInput.text = string.Empty;
         gameObject.SetActive(false);
     }
 
@@ -60,28 +69,28 @@ public class DialogWindowManager : MonoBehaviour
         for (int hour = 0; hour < NUMBER_OF_HOURS; ++hour)
         {
             Button newButton = Instantiate(buttonPrototype, hoursContainer) as Button;
-            string currentHour = hour.ToString("D2");
-            newButton.name = currentHour;
-            newButton.GetComponentInChildren<Text>().text = currentHour;
-            newButton.onClick.AddListener(() => TaskForHourButtons(currentHour));
+            string formattedHour = hour.ToString("D2");
+            newButton.name = formattedHour;
+            newButton.GetComponentInChildren<Text>().text = formattedHour;
+            newButton.onClick.AddListener(() => TaskForHourButtons(hour));
         }
 
         for (int minute = 0; minute < NUMBER_OF_MINUTES; ++minute)
         {
             Button newButton = Instantiate(buttonPrototype, minutesContainer) as Button;
-            string currentMinute = minute.ToString("D2");
-            newButton.name = currentMinute;
-            newButton.GetComponentInChildren<Text>().text = currentMinute;
-            newButton.onClick.AddListener(() => TaskForMinuteButtons(currentMinute));
+            string formattedMinute = minute.ToString("D2");
+            newButton.name = formattedMinute;
+            newButton.GetComponentInChildren<Text>().text = formattedMinute;
+            newButton.onClick.AddListener(() => TaskForMinuteButtons(minute));
         }
     }
 
-    void TaskForHourButtons(string hour)
+    void TaskForHourButtons(int hour)
     {
         _selectedHours = hour;
     }
 
-    void TaskForMinuteButtons(string minute)
+    void TaskForMinuteButtons(int minute)
     {
         _selectedMinutes = minute;
     }

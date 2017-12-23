@@ -1,22 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class IssueManager : MonoBehaviour
 {
 
     public GameObject dialogWindow, prototype, closeButton;
-    public UnityEngine.UI.InputField issueInput;
-    public Transform container;
+    public Transform issuesContainer;
 
     DialogWindowManager dialogWindowManager;
-    CloseButton closeButtonDriver;
+    CloseButtonDriver closeButtonDriver;
 
     private void Awake()
     {
         dialogWindowManager = dialogWindow.GetComponent<DialogWindowManager>();
         dialogWindow.SetActive(false);
-        closeButtonDriver = closeButton.GetComponent<CloseButton>();
+        closeButtonDriver = closeButton.GetComponent<CloseButtonDriver>();
     }
 
     private GameObject spawnIssue(string issueText, string issueTime)
@@ -32,15 +29,11 @@ public class IssueManager : MonoBehaviour
     {
         if (dialogWindow.activeSelf)
         {
-            if (issueInput.text.Length > 3)
+            if (dialogWindowManager.IssueText.Length > 3) //Create new issue if lenght > 3
             {
-                string selectedTime = string.Empty;
-                selectedTime += dialogWindowManager.SelectedHours;
-                selectedTime += ":";
-                selectedTime += dialogWindowManager.SelectedMinutes;
-                Instantiate(spawnIssue(issueInput.text, selectedTime), container);
+                string selectedTime = dialogWindowManager.SelectedHours + ":" + dialogWindowManager.SelectedMinutes;
+                Instantiate(spawnIssue(dialogWindowManager.IssueText, selectedTime), issuesContainer);
                 dialogWindowManager.Deactivate();
-                issueInput.text = string.Empty;
                 closeButtonDriver.Deactivate();
             }
         }

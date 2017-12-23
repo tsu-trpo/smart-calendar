@@ -11,7 +11,7 @@ public class IssueManager : MonoBehaviour
     DialogWindowManager dialogWindowManager;
     CloseButtonDriver closeButtonDriver;
 
-    private System.DateTime selectedDate = System.DateTime.Now;
+    private System.DateTime selectedDate = System.DateTime.Today;
 
     public void SetDate(System.DateTime date)
     {
@@ -19,22 +19,21 @@ public class IssueManager : MonoBehaviour
         Issue[] childIssues = issuesContainer.GetComponentsInChildren<Issue>();
         foreach (Issue children in childIssues)
         {
-            Destroy(children.gameObject);
+            children.gameObject.SetActive(false);
         }
         List<GameObject> issues;
         if (issuesMap.TryGetValue(selectedDate, out issues))
         {
             foreach (GameObject issueCell in issues)
             {
-                Instantiate(issueCell, issuesContainer);
-
+                issueCell.SetActive(true);
+                //Instantiate(issueCell, issuesContainer);
             }
         }
     }
 
     private void Awake()
     {
-
         dialogWindowManager = dialogWindow.GetComponent<DialogWindowManager>();
         dialogWindow.SetActive(false);
         closeButtonDriver = closeButton.GetComponent<CloseButtonDriver>();
@@ -44,7 +43,7 @@ public class IssueManager : MonoBehaviour
     {
         GameObject issueClone = prototype;
         issueClone.GetComponent<Issue>().IssueText = issueText;
-        issueClone.GetComponent<Issue>().IssueText = issueTime;
+        issueClone.GetComponent<Issue>().IssueTime = issueTime;
         return issueClone;
     }
 
@@ -56,6 +55,10 @@ public class IssueManager : MonoBehaviour
             {
                 string selectedTime = dialogWindowManager.SelectedHours + ":" + dialogWindowManager.SelectedMinutes;
                 GameObject newIssue = Instantiate(spawnIssue(dialogWindowManager.IssueText, selectedTime), issuesContainer) as GameObject;
+                if (!issuesMap.ContainsKey(selectedDate))
+                {
+                    issuesMap.Add(selectedDate, new List<GameObject>());
+                }
                 issuesMap[selectedDate].Add(newIssue);
                 dialogWindowManager.Deactivate();
                 closeButtonDriver.Deactivate();

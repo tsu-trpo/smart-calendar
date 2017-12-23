@@ -115,4 +115,13 @@ public class MonthView : MonoBehaviour {
             }
         }
     }
+
+    public void SwitchCells()
+    {
+        for (int i = 0; i < countOfColumns * countOfRows; i++)
+        {
+            arrayOfCells[i].ChangeState();
+        }
+
+    }
 }

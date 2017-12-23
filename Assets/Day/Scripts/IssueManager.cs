@@ -69,5 +69,7 @@ public class IssueManager : MonoBehaviour
             closeButtonDriver.Activate();
             dialogWindowManager.Activate();
         }
-    }
+
+    }    
+
 }

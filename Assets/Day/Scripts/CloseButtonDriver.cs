@@ -5,6 +5,9 @@
 public class CloseButtonDriver : MonoBehaviour
 {
     public GameObject dialogWindow;
+    public GameObject monthWindow;
+    private MonthView month;
+
 
     private CircleCollider2D buttonCollider;
     private Animation buttonAnimation;
@@ -18,6 +21,7 @@ public class CloseButtonDriver : MonoBehaviour
         buttonCollider = GetComponent<CircleCollider2D>();
         buttonAnimation = GetComponent<Animation>();
         dialogWindowManager = dialogWindow.GetComponent<DialogWindowManager>();
+        month = monthWindow.GetComponent<MonthView>();
     }
 
     private void OnMouseUp()
@@ -30,11 +34,13 @@ public class CloseButtonDriver : MonoBehaviour
     {
         buttonCollider.enabled = true;
         buttonAnimation.Play(BUTTON_UP_ANIM);
+        month.SwitchCells();
     }
 
     public void Deactivate()
     {
         buttonCollider.enabled = false;
         buttonAnimation.Play(BUTTON_DOWN_ANIM);
+        month.SwitchCells();
     }
 }

@@ -16,15 +16,19 @@ public class IssueManager : MonoBehaviour
     public void SetDate(System.DateTime date)
     {
         selectedDate = date;
-        Transform[] childrens = issuesContainer.GetComponentsInChildren<Transform>();
-        foreach(Transform children in childrens)
+        Issue[] childIssues = issuesContainer.GetComponentsInChildren<Issue>();
+        foreach (Issue children in childIssues)
         {
             Destroy(children.gameObject);
         }
-        foreach(GameObject issueCell in issuesMap[selectedDate])
+        List<GameObject> issues;
+        if (issuesMap.TryGetValue(selectedDate, out issues))
         {
-            Instantiate(issueCell, issuesContainer);
+            foreach (GameObject issueCell in issues)
+            {
+                Instantiate(issueCell, issuesContainer);
 
+            }
         }
     }
 

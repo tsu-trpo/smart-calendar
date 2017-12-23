@@ -11,6 +11,7 @@ public class Cell : MonoBehaviour
     private Text text;
     private DateTime date;
     private bool isExist = true;  //activity, true is basic state;
+    private IssueManager issueManager;
 
     public void SetDate(DateTime _date)
     {
@@ -38,12 +39,14 @@ public class Cell : MonoBehaviour
         month = this.transform.GetComponentInParent<MonthView>();
         Debug.Log("Clicked! on " + date.ToString("yyyy MMMM dd"));
         month.ChangePushed(number);
-       // month.ChangeCoordinates();
+        // month.ChangeCoordinates();
+        issueManager.SetDate(date);
     }
 
     private void Awake()
     {
         text = this.gameObject.transform.GetChild(0).GetComponent<Text>();
+        issueManager = GameObject.Find("Add Button").GetComponent<IssueManager>();
     }
 
     public void ChangeState()

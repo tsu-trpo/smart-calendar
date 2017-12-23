@@ -4,6 +4,7 @@
 #
 **/Library/*
 **/Temp/*
+**/UnityPackageManager/*
 **/*.csproj
 **/*.unityproj
 **/*.sln

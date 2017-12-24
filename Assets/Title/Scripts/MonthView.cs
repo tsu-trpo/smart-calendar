@@ -26,7 +26,7 @@ public class MonthView : MonoBehaviour {
         float  y = 3f;
         for (int i = 0; i < countOfRows; i++)
         {
-            float x = -2.5f;
+            float x = -2.15f;
             for (int j = 0; j < countOfColumns; j++)
             {
                 GameObject CellGO;
@@ -34,7 +34,7 @@ public class MonthView : MonoBehaviour {
                 CellGO.transform.SetParent(canvas.transform);
                 arrayOfCells[countOfColumns * i + j] = CellGO.GetComponent<Cell>();
                 arrayOfCells[countOfColumns * i + j].SetNumber(countOfColumns * i + j);
-                x += 0.8f;
+                x += 0.7f;
             }
             y -= 0.8f;
         }
@@ -111,7 +111,6 @@ public class MonthView : MonoBehaviour {
 
             else {
                 arrayOfCells[i].transform.position = new Vector3(arrayOfCells[i].transform.position.x, 3, arrayOfCells[i].transform.position.z);
-               // arrayOfCells[i].transform.position.Set(arrayOfCells[i].transform.position.x, 0, arrayOfCells[i].transform.position.z);
             }
         }
     }

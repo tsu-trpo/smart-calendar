@@ -19,9 +19,9 @@ public class IssueManager : MonoBehaviour
     private GameObject spawnIssue(string issueText, string issueTime)
     {
         GameObject issueClone = prototype;
-        UnityEngine.UI.Text[] texts = issueClone.GetComponentsInChildren<UnityEngine.UI.Text>();
-        texts[0].text = issueText;
-        texts[1].text = issueTime;
+        Issue issue = issueClone.GetComponent<Issue>();
+        issue.IssueText = issueText;
+        issue.IssueTime = issueTime;
         return issueClone;
     }
 

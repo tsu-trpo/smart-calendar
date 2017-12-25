@@ -56,7 +56,7 @@ public class DialogWindowManager : MonoBehaviour
 
     IEnumerator Deactivating()
     {
-        anim.Play("DM hide");
+        anim.Play(HIDE_DM_ANIM);
         yield return new WaitForSeconds(anim[HIDE_DM_ANIM].length);
         issueInput.text = string.Empty;
         gameObject.SetActive(false);

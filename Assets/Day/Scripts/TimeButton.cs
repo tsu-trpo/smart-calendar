@@ -21,11 +21,11 @@ public class TimeButton : MonoBehaviour {
     {
         get
         {
-            return buttonTextUI.GetComponentInChildren<Text>().text;
+            return buttonTextUI.text;
         }
         set
         {
-            buttonTextUI.GetComponentInChildren<Text>().text = value;
+            buttonTextUI.text = value;
         }
     }
 }

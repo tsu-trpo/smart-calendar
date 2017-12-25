@@ -5,7 +5,19 @@ public class TimeButton : MonoBehaviour {
 
 	public Text buttonTextUI;
 
-    string ButtonText
+    public string Name
+    {
+        get
+        {
+            return name;
+        }
+        set
+        {
+            name = value;
+        }
+    }
+
+    public string ButtonText
     {
         get
         {
@@ -15,10 +27,5 @@ public class TimeButton : MonoBehaviour {
         {
             buttonTextUI.GetComponentInChildren<Text>().text = value;
         }
-    }
-
-    public void setName(string newName)
-    {
-        name = newName;
     }
 }

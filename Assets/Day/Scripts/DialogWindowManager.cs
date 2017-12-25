@@ -69,18 +69,20 @@ public class DialogWindowManager : MonoBehaviour
         for (int hour = 0; hour < NUMBER_OF_HOURS; ++hour)
         {
             Button newButton = Instantiate(buttonPrototype, hoursContainer) as Button;
+            TimeButton timeButton = newButton.GetComponent<TimeButton>();
             string formattedHour = hour.ToString("D2");
-            newButton.name = formattedHour;
-            newButton.GetComponentInChildren<Text>().text = formattedHour;
+            timeButton.Name = formattedHour;
+            timeButton.ButtonText = formattedHour;
             newButton.onClick.AddListener(() => TaskForHourButtons(hour));
         }
 
         for (int minute = 0; minute < NUMBER_OF_MINUTES; ++minute)
         {
             Button newButton = Instantiate(buttonPrototype, minutesContainer) as Button;
+            TimeButton timeButton = newButton.GetComponent<TimeButton>();
             string formattedMinute = minute.ToString("D2");
-            newButton.name = formattedMinute;
-            newButton.GetComponentInChildren<Text>().text = formattedMinute;
+            timeButton.Name = formattedMinute;
+            timeButton.ButtonText = formattedMinute;
             newButton.onClick.AddListener(() => TaskForMinuteButtons(minute));
         }
     }

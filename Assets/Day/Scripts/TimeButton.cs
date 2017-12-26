@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class TimeButton : MonoBehaviour {
-
-	public Text buttonTextUI;
+public class TimeButton : MonoBehaviour
+{
+    public Text buttonTextUI;
 
     public string Name
     {

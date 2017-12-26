@@ -31,7 +31,7 @@ public class IssueManager : MonoBehaviour
     {
         if (dialogWindow.activeSelf)
         {
-            if (dialogWindowManager.IssueText.Length >= minIssueLength) //Create new issue if lenght > 3
+            if (dialogWindowManager.IssueText.Length >= minIssueLength) //Create new issue if length is not too short
             {
                 string selectedTime = dialogWindowManager.SelectedHours + ":" + dialogWindowManager.SelectedMinutes;
                 Instantiate(spawnIssue(dialogWindowManager.IssueText, selectedTime), issuesContainer);

@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 222600241597315084}
   - component: {fileID: 114676642235396112}
   - component: {fileID: 114310288142241228}
+  - component: {fileID: 114969392739794768}
   m_Layer: 5
   m_Name: Time Button
   m_TagString: Untagged
@@ -147,6 +148,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Value
+--- !u!114 &114969392739794768
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1707921516943044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a0400f20ce0b74eb7461a38c87649b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonTextUI: {fileID: 114681979213489120}
 --- !u!222 &222600241597315084
 CanvasRenderer:
   m_ObjectHideFlags: 1

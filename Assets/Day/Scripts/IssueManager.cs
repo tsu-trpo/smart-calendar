@@ -9,6 +9,8 @@ public class IssueManager : MonoBehaviour
     DialogWindowManager dialogWindowManager;
     CloseButtonDriver closeButtonDriver;
 
+    const int minIssueLength = 4;
+
     private void Awake()
     {
         dialogWindowManager = dialogWindow.GetComponent<DialogWindowManager>();
@@ -29,12 +31,16 @@ public class IssueManager : MonoBehaviour
     {
         if (dialogWindow.activeSelf)
         {
-            if (dialogWindowManager.IssueText.Length > 3) //Create new issue if lenght > 3
+            if (dialogWindowManager.IssueText.Length >= minIssueLength) //Create new issue if lenght > 3
             {
                 string selectedTime = dialogWindowManager.SelectedHours + ":" + dialogWindowManager.SelectedMinutes;
                 Instantiate(spawnIssue(dialogWindowManager.IssueText, selectedTime), issuesContainer);
                 dialogWindowManager.Deactivate();
                 closeButtonDriver.Deactivate();
+            }
+            else
+            {
+                dialogWindowManager.ClearInputField(minIssueLength);
             }
         }
         else

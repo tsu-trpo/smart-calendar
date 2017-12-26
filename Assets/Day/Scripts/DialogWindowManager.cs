@@ -39,6 +39,7 @@ public class DialogWindowManager : MonoBehaviour
     const int NUMBER_OF_MINUTES = 60;
 
     private Animation anim;
+    private Text inputPlaceholderText;
 
     const string SHOW_DM_ANIM = "DM show";
     const string HIDE_DM_ANIM = "DM hide";
@@ -62,9 +63,16 @@ public class DialogWindowManager : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public void ClearInputField(int minimumCharacters)
+    {
+        issueInput.text = string.Empty;
+        inputPlaceholderText.text = "Enter issue text(at least " + minimumCharacters + " symbols)...";
+    }
+
     private void Awake()
     {
         anim = GetComponent<Animation>();
+        inputPlaceholderText = issueInput.placeholder.GetComponent<Text>();
 
         for (int hour = 0; hour < NUMBER_OF_HOURS; ++hour)
         {

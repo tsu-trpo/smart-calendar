@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class IssueManager : MonoBehaviour
 {
-    private Dictionary<System.DateTime, List<GameObject>> issuesMap = new Dictionary<System.DateTime, List<GameObject>>();
+    private Dictionary<System.DateTime, List<Issue>> issuesMap = new Dictionary<System.DateTime, List<Issue>>();
 
     public GameObject dialogWindow, prototype, closeButton;
     public Transform issuesContainer;
@@ -30,12 +30,12 @@ public class IssueManager : MonoBehaviour
         {
             currentIssue.gameObject.SetActive(false);
         }
-        List<GameObject> selectedDateIssues;
+        List<Issue> selectedDateIssues;
         if (issuesMap.TryGetValue(selectedDate, out selectedDateIssues)) //if there are assigned issues on selected date
         {
-            foreach (GameObject currentIssue in selectedDateIssues) //enable them
+            foreach (Issue currentIssue in selectedDateIssues) //enable them
             {
-                currentIssue.SetActive(true);
+                currentIssue.gameObject.SetActive(true);
             }
         }
     }
@@ -50,11 +50,11 @@ public class IssueManager : MonoBehaviour
                 Issue newIssue = Instantiate(prototype, issuesContainer).GetComponent<Issue>();
                 newIssue.IssueText = dialogWindowManager.IssueText;
                 newIssue.IssueTime = selectedTime;
-                if (!issuesMap.ContainsKey(selectedDate))
+                if (!issuesMap.ContainsKey(selectedDate)) //Creating new date in the map if its doesnt exists
                 {
-                    issuesMap.Add(selectedDate, new List<GameObject>());
+                    issuesMap.Add(selectedDate, new List<Issue>());
                 }
-                issuesMap[selectedDate].Add(newIssue.gameObject);
+                issuesMap[selectedDate].Add(newIssue); //add new issue to the map
                 dialogWindowManager.Deactivate();
                 closeButtonDriver.Deactivate();
             }

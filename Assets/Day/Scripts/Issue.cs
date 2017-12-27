@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class Issue : MonoBehaviour {
-
+public class Issue : MonoBehaviour
+{
     public Text issueTextUI, issueTimeUI;
 
     public string IssueText

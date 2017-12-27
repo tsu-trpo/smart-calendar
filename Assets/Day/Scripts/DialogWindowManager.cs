@@ -9,7 +9,7 @@ public class DialogWindowManager : MonoBehaviour
     public InputField issueInput; //How to setpossibility set references only at inspector?
     public Button buttonPrototype;
 
-    public int SelectedHours
+    public string SelectedHours
     {
         get
         {
@@ -17,7 +17,7 @@ public class DialogWindowManager : MonoBehaviour
         }
     }
 
-    public int SelectedMinutes
+    public string SelectedMinutes
     {
         get
         {
@@ -33,7 +33,7 @@ public class DialogWindowManager : MonoBehaviour
         }
     }
 
-    private int _selectedHours = 0, _selectedMinutes = 0;
+    private string _selectedHours = "00", _selectedMinutes = "00";
 
     const int NUMBER_OF_HOURS = 24;
     const int NUMBER_OF_MINUTES = 60;
@@ -81,7 +81,7 @@ public class DialogWindowManager : MonoBehaviour
             string formattedHour = hour.ToString("D2");
             timeButton.Name = formattedHour;
             timeButton.ButtonText = formattedHour;
-            newButton.onClick.AddListener(() => TaskForHourButtons(hour));
+            newButton.onClick.AddListener(() => TaskForHourButtons(formattedHour));
         }
 
         for (int minute = 0; minute < NUMBER_OF_MINUTES; ++minute)
@@ -91,16 +91,16 @@ public class DialogWindowManager : MonoBehaviour
             string formattedMinute = minute.ToString("D2");
             timeButton.Name = formattedMinute;
             timeButton.ButtonText = formattedMinute;
-            newButton.onClick.AddListener(() => TaskForMinuteButtons(minute));
+            newButton.onClick.AddListener(() => TaskForMinuteButtons(formattedMinute));
         }
     }
 
-    void TaskForHourButtons(int hour)
+    void TaskForHourButtons(string hour)
     {
         _selectedHours = hour;
     }
 
-    void TaskForMinuteButtons(int minute)
+    void TaskForMinuteButtons(string minute)
     {
         _selectedMinutes = minute;
     }

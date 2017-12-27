@@ -103,10 +103,9 @@ public class MonthView : MonoBehaviour
 
     public void SwitchCells()
     {
-        for (int i = 0; i < countOfColumns * countOfRows; i++)
+        for (int i = 0; i < ArrayOfCells.Length; i++)
         {
             ArrayOfCells[i].Turn_OnOff();
         }
-
     }
 }

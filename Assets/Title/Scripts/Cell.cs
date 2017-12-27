@@ -11,6 +11,7 @@ public class Cell : MonoBehaviour
     private MonthView month;
     private int number;
     private bool isExist = true;  //activity, true is basic state;
+    private MeshRenderer meshRenderer;
 
     public void SetDate(DateTime _date)
     {
@@ -43,6 +44,7 @@ public class Cell : MonoBehaviour
     private void Awake()
     {
         text = this.gameObject.transform.GetChild(0).GetComponent<Text>();
+        meshRenderer = this.transform.GetComponent<MeshRenderer>();
     }
 
     public void Turn_OnOff()
@@ -58,7 +60,7 @@ public class Cell : MonoBehaviour
 
     public void SetBackgroundOff()
     {
-        this.transform.GetComponent<MeshRenderer>().enabled = false;
+        meshRenderer.enabled = false;
     }
 
     public void SetNumber(int _number)

@@ -49,8 +49,7 @@ public class Cell : MonoBehaviour
 
     public void Turn_OnOff()
     {
-        isExist = !isExist;
-        gameObject.SetActive(isExist);
+        gameObject.SetActive(!gameObject.activeSelf);
     }
 
     public void SetBackgroundOn()

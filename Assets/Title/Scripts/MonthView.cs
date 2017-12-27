@@ -13,7 +13,7 @@ public class MonthView : MonoBehaviour
     private Text thisMonth;
     private const int countOfRows = 6;
     private const int countOfColumns = 7;
-    private int pushedCell = 0;
+    private int selectedCell = 0;
 
     private void Start()
     {
@@ -83,21 +83,21 @@ public class MonthView : MonoBehaviour
     {
         month = month.AddMonths(1);
         PrintMonth();
-        ArrayOfCells[pushedCell].SetBackgroundOff();
+        ArrayOfCells[selectedCell].SetBackgroundOff();
     }
 
     public void PreviousMonth()
     {
         month = month.AddMonths(-1);
         PrintMonth();
-        ArrayOfCells[pushedCell].SetBackgroundOff();
+        ArrayOfCells[selectedCell].SetBackgroundOff();
     }
 
     public void SelectDay(int index)
     {
-        ArrayOfCells[pushedCell].SetBackgroundOff();
+        ArrayOfCells[selectedCell].SetBackgroundOff();
         ArrayOfCells[index].SetBackgroundOn();
-        pushedCell = index;
+        selectedCell = index;
     }
 
     public void SwitchCells()

@@ -6,25 +6,16 @@ public class IssueManager : MonoBehaviour
     public GameObject dialogWindow, prototype, closeButton;
     public Transform issuesContainer;
 
-    DialogWindowManager dialogWindowManager;
-    CloseButtonDriver closeButtonDriver;
+    private DialogWindowManager dialogWindowManager;
+    private CloseButtonDriver closeButtonDriver;
 
-    const int minIssueLength = 4;
+    private const int minIssueLength = 4;
 
     private void Awake()
     {
         dialogWindowManager = dialogWindow.GetComponent<DialogWindowManager>();
         dialogWindow.SetActive(false);
         closeButtonDriver = closeButton.GetComponent<CloseButtonDriver>();
-    }
-
-    private GameObject spawnIssue(string issueText, string issueTime)
-    {
-        GameObject issueClone = prototype;
-        Issue issue = issueClone.GetComponent<Issue>();
-        issue.IssueText = issueText;
-        issue.IssueTime = issueTime;
-        return issueClone;
     }
 
     private void OnMouseUp()
@@ -34,7 +25,9 @@ public class IssueManager : MonoBehaviour
             if (dialogWindowManager.IssueText.Length >= minIssueLength) //Create new issue if length is not too short
             {
                 string selectedTime = dialogWindowManager.SelectedHours + ":" + dialogWindowManager.SelectedMinutes;
-                Instantiate(spawnIssue(dialogWindowManager.IssueText, selectedTime), issuesContainer);
+                Issue newIssue = Instantiate(prototype, issuesContainer).GetComponent<Issue>();
+                newIssue.IssueText = dialogWindowManager.IssueText;
+                newIssue.IssueTime = selectedTime;
                 dialogWindowManager.Deactivate();
                 closeButtonDriver.Deactivate();
             }

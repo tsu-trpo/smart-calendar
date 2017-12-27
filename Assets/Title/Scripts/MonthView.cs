@@ -100,7 +100,7 @@ public class MonthView : MonoBehaviour
         selectedCell = index;
     }
 
-    public void SwitchCells()
+    public void Turn_OnOff_AllCells()
     {
         for (int i = 0; i < ArrayOfCells.Length; i++)
         {

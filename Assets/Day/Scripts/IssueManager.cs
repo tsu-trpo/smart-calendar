@@ -40,21 +40,25 @@ public class IssueManager : MonoBehaviour
         }
     }
 
+    private Issue CreateIssue()
+    {
+        Issue newIssue = Instantiate(prototype, issuesContainer).GetComponent<Issue>();
+        newIssue.IssueText = dialogWindowManager.IssueText;
+        newIssue.IssueTime = dialogWindowManager.SelectedHours + ":" + dialogWindowManager.SelectedMinutes;
+        return newIssue;
+    }
+
     private void OnMouseUp()
     {
         if (dialogWindow.activeSelf)
         {
             if (dialogWindowManager.IssueText.Length >= minIssueLength) //Create new issue if length is not too short
             {
-                string selectedTime = dialogWindowManager.SelectedHours + ":" + dialogWindowManager.SelectedMinutes;
-                Issue newIssue = Instantiate(prototype, issuesContainer).GetComponent<Issue>();
-                newIssue.IssueText = dialogWindowManager.IssueText;
-                newIssue.IssueTime = selectedTime;
                 if (!issuesMap.ContainsKey(selectedDate)) //Creating new date in the map if its doesnt exists
                 {
                     issuesMap.Add(selectedDate, new List<Issue>());
                 }
-                issuesMap[selectedDate].Add(newIssue); //add new issue to the map
+                issuesMap[selectedDate].Add(CreateIssue()); //add new issue to the map
                 dialogWindowManager.Deactivate();
                 closeButtonDriver.Deactivate();
             }

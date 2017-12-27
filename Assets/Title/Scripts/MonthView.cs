@@ -31,8 +31,7 @@ public class MonthView : MonoBehaviour
             for (int j = 0; j < countOfColumns; j++)
             {
                 GameObject CellGO;
-                CellGO = Instantiate(target, new Vector3(x, y, 0), Quaternion.identity);
-                CellGO.transform.SetParent(canvas.transform);
+                CellGO = Instantiate(target, new Vector3(x, y, 0), Quaternion.identity, canvas.transform);
                 int day = countOfColumns * i + j;
                 ArrayOfCells[day] = CellGO.GetComponent<Cell>();
                 ArrayOfCells[day].SetDay(day);

@@ -93,7 +93,7 @@ public class MonthView : MonoBehaviour
         ArrayOfCells[pushedCell].SetBackgroundOff();
     }
 
-    public void ChangePushed(int index)
+    public void SelectDay(int index)
     {
         ArrayOfCells[pushedCell].SetBackgroundOff();
         ArrayOfCells[index].SetBackgroundOn();

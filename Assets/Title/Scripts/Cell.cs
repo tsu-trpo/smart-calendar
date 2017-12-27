@@ -37,7 +37,7 @@ public class Cell : MonoBehaviour
     {
         month = this.transform.GetComponentInParent<MonthView>();
         Debug.Log("Clicked! on " + date.ToString("yyyy MMMM dd"));
-        month.ChangePushed(number);
+        month.SelectDay(number);
     }
 
     private void Awake()

@@ -45,7 +45,7 @@ public class Cell : MonoBehaviour
         text = this.gameObject.transform.GetChild(0).GetComponent<Text>();
     }
 
-    public void ChangeState()
+    public void Turn_OnOff()
     {
         isExist = !isExist;
         gameObject.SetActive(isExist);

@@ -1,15 +1,19 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class IssueManager : MonoBehaviour
 {
+    private Dictionary<System.DateTime, List<Issue>> issuesMap = new Dictionary<System.DateTime, List<Issue>>();
 
     public GameObject dialogWindow, prototype, closeButton;
     public Transform issuesContainer;
 
-    DialogWindowManager dialogWindowManager;
-    CloseButtonDriver closeButtonDriver;
+    private DialogWindowManager dialogWindowManager;
+    private CloseButtonDriver closeButtonDriver;
 
-    const int minIssueLength = 4;
+    private const int minIssueLength = 4;
+
+    private System.DateTime selectedDate = System.DateTime.Today;
 
     private void Awake()
     {
@@ -18,13 +22,30 @@ public class IssueManager : MonoBehaviour
         closeButtonDriver = closeButton.GetComponent<CloseButtonDriver>();
     }
 
-    private GameObject spawnIssue(string issueText, string issueTime)
+    public void SetDate(System.DateTime date)
     {
-        GameObject issueClone = prototype;
-        Issue issue = issueClone.GetComponent<Issue>();
-        issue.IssueText = issueText;
-        issue.IssueTime = issueTime;
-        return issueClone;
+        selectedDate = date;
+        Issue[] allIssues = issuesContainer.GetComponentsInChildren<Issue>();
+        foreach (Issue currentIssue in allIssues) //disables all issues
+        {
+            currentIssue.gameObject.SetActive(false);
+        }
+        List<Issue> selectedDateIssues;
+        if (issuesMap.TryGetValue(selectedDate, out selectedDateIssues)) //if there are assigned issues on selected date
+        {
+            foreach (Issue currentIssue in selectedDateIssues) //enable them
+            {
+                currentIssue.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    private Issue CreateIssue()
+    {
+        Issue newIssue = Instantiate(prototype, issuesContainer).GetComponent<Issue>();
+        newIssue.IssueText = dialogWindowManager.IssueText;
+        newIssue.IssueTime = dialogWindowManager.SelectedHours + ":" + dialogWindowManager.SelectedMinutes;
+        return newIssue;
     }
 
     private void OnMouseUp()
@@ -33,8 +54,11 @@ public class IssueManager : MonoBehaviour
         {
             if (dialogWindowManager.IssueText.Length >= minIssueLength) //Create new issue if length is not too short
             {
-                string selectedTime = dialogWindowManager.SelectedHours + ":" + dialogWindowManager.SelectedMinutes;
-                Instantiate(spawnIssue(dialogWindowManager.IssueText, selectedTime), issuesContainer);
+                if (!issuesMap.ContainsKey(selectedDate)) //Creating new date in the map if its doesnt exists
+                {
+                    issuesMap.Add(selectedDate, new List<Issue>());
+                }
+                issuesMap[selectedDate].Add(CreateIssue()); //add new issue to the map
                 dialogWindowManager.Deactivate();
                 closeButtonDriver.Deactivate();
             }

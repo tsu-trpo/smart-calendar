@@ -63,7 +63,7 @@ public class Cell : MonoBehaviour
         meshRenderer.enabled = false;
     }
 
-    public void SetNumber(int _number)
+    public void SetDay(int _number)
     {
         number = _number;
     }

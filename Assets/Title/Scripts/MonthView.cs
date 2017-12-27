@@ -34,7 +34,7 @@ public class MonthView : MonoBehaviour
                 CellGO = Instantiate(target, new Vector3(x, y, 0), Quaternion.identity);
                 CellGO.transform.SetParent(canvas.transform);
                 ArrayOfCells[countOfColumns * i + j] = CellGO.GetComponent<Cell>();
-                ArrayOfCells[countOfColumns * i + j].SetNumber(countOfColumns * i + j);
+                ArrayOfCells[countOfColumns * i + j].SetDay(countOfColumns * i + j);
                 x += 0.7f;
             }
             y -= 0.8f;
